@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.oneteam.camcard"
+        version="0.7.0">
+
+  <name>CamCard</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/CamCard.js" target="js/CamCard.js"/>
+
+  <js-module src="www/CamCard.js" name="CamCard">
+    <clobbers target="CamCard" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CamCard">
+        <param name="android-package" value="com.oneteam.plugin.CamCard"/>
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.oneteam.plugin.MainActivity"></activity>
+    </config-file>
+
+    <source-file src="src/android/CamCard.java" target-dir="src/com/oneteam/plugin/"/>
+    <source-file src="src/android/MainActivity.java" target-dir="src/com/oneteam/plugin/"/>
+    <source-file src="src/android/res/layout" target-dir="res/"/>
+    <source-file src="src/android/res/values/dimens.xml" target-dir="res/values/"/>
+
+  </platform>
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/widget">
+      <feature name="Hello">
+        <param name="ios-package" value="HWPHello" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/HWPHello.h" target-dir="HelloPlugin"/>
+    <source-file src="src/ios/HWPHello.m" target-dir="HelloPlugin"/>
+  </platform>
+
+  <platform name="wp7">
+    <source-file src="src/wp7/Hello.cs"/>
+  </platform>
+
+</plugin>
