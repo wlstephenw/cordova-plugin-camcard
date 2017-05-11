@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.oneteam.camcard"
+        id="cordova-plugin-camcard"
         version="0.7.0">
 
   <name>CamCard</name>
@@ -22,14 +22,9 @@
         <param name="android-package" value="com.oneteam.plugin.CamCard"/>
       </feature>
     </config-file>
-    <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="com.oneteam.plugin.MainActivity"></activity>
-    </config-file>
 
     <source-file src="src/android/CamCard.java" target-dir="src/com/oneteam/plugin/"/>
-    <source-file src="src/android/MainActivity.java" target-dir="src/com/oneteam/plugin/"/>
-    <source-file src="src/android/res/layout" target-dir="res/"/>
-    <source-file src="src/android/res/values/dimens.xml" target-dir="res/values/"/>
+    <resource-file src="src/android/libs/bcr_open_api_20160324.jar" target="libs/bcr_open_api_20160324.jar"/>
 
   </platform>
 
