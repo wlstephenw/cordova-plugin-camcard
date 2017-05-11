@@ -1,9 +1,9 @@
 
-#Installation
+# Installation
 
-cordova plugin add cordova-plugin-camcard --variable OPEN_ID=[your open id] --save
+cordova plugin add https://github.com/wlstephenw/cordova-plugin-camcard.git --variable OPEN_ID=[your open id] --save
 
-#Usage
+# Usage
 
 1. Install 名片全能王
 2. 使用示例：
