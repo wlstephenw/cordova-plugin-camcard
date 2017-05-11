@@ -9,18 +9,17 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/CamCard.js" target="js/CamCard.js"/>
-
   <js-module src="www/CamCard.js" name="CamCard">
     <clobbers target="CamCard" />
   </js-module>
 
   <platform name="android">
-
+    <preference name="OPEN_ID" />
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="CamCard">
         <param name="android-package" value="com.oneteam.plugin.CamCard"/>
       </feature>
+      <preference name="OpenId" value="$OPEN_ID" />
     </config-file>
 
     <source-file src="src/android/CamCard.java" target-dir="src/com/oneteam/plugin/"/>
@@ -29,7 +28,7 @@
   </platform>
 
   <platform name="ios">
-    
+     <preference name="OpenId" />
     <config-file target="config.xml" parent="/widget">
       <feature name="Hello">
         <param name="ios-package" value="HWPHello" />
@@ -41,6 +40,7 @@
   </platform>
 
   <platform name="wp7">
+     <preference name="OpenId" />
     <source-file src="src/wp7/Hello.cs"/>
   </platform>
 

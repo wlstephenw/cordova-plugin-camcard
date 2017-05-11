@@ -16,7 +16,7 @@ import com.intsig.openapilib.OpenApiParams;
 public class CamCard extends CordovaPlugin {
 
     private String tag = "camcard";
-    OpenApi openApi = OpenApi.instance("t4b9UKr52K7A7YHa3N4L6ydd");
+    OpenApi openApi = null;
     OpenApiParams params = new OpenApiParams() {
         {
             this.setRecognizeLanguage("");
@@ -31,6 +31,8 @@ public class CamCard extends CordovaPlugin {
 
     @Override
     public void pluginInitialize() {
+        String openId = preferences.getString("OpenId", "t4b9UKr52K7A7YHa3N4L6ydd");
+        openApi = OpenApi.instance(openId);
         activity = this.cordova.getActivity();
 
     }
