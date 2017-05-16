@@ -24,24 +24,19 @@
 
     <source-file src="src/android/CamCard.java" target-dir="src/com/oneteam/plugin/"/>
     <resource-file src="src/android/libs/bcr_open_api_20160324.jar" target="libs/bcr_open_api_20160324.jar"/>
-
   </platform>
 
   <platform name="ios">
-     <preference name="OpenId" />
+     <preference name="OPEN_ID" />
     <config-file target="config.xml" parent="/widget">
-      <feature name="Hello">
-        <param name="ios-package" value="HWPHello" />
+      <feature name="CamCard">
+        <param name="ios-package" value="CamCard" />
       </feature>
+      <preference name="OpenId" value="$OPEN_ID" />
     </config-file>
 
     <header-file src="src/ios/HWPHello.h" target-dir="HelloPlugin"/>
     <source-file src="src/ios/HWPHello.m" target-dir="HelloPlugin"/>
-  </platform>
-
-  <platform name="wp7">
-     <preference name="OpenId" />
-    <source-file src="src/wp7/Hello.cs"/>
   </platform>
 
 </plugin>
