@@ -27,7 +27,9 @@
   </platform>
 
   <platform name="ios">
-     <preference name="OPEN_ID" />
+    <preference name="OPEN_ID" />
+    <preference name="APP_ID" />
+
     <config-file target="config.xml" parent="/widget">
       <feature name="CamCard">
         <param name="ios-package" value="CamCard" />
@@ -35,8 +37,31 @@
       <preference name="OpenId" value="$OPEN_ID" />
     </config-file>
 
-    <header-file src="src/ios/HWPHello.h" target-dir="HelloPlugin"/>
-    <source-file src="src/ios/HWPHello.m" target-dir="HelloPlugin"/>
+    <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+      <array>
+        <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>$APP_ID</string>
+          </array>
+        </dict>
+      </array>
+    </config-file>    
+
+    <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+      <array>
+        <string>CamCardWesternOpenAPI</string>
+        <string>CamCardEastOpenAPI</string> 
+        <string>CamCardHDOpenAPI</string> 
+        <string>camcard</string>
+      </array>
+    </config-file>
+
+    <header-file src="src/ios/CamCard.h" target-dir="CamCardPlugin"/>
+    <source-file src="src/ios/CamCard.m" target-dir="CamCardPlugin"/>
+    <framework src="src/ios/CamCardOpenAPIFramework.embeddedframework/CamCardOpenAPIFramework.framework" custom="true"/>
   </platform>
 
 </plugin>
