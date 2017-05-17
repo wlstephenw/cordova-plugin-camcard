@@ -29,15 +29,26 @@
     CCOpenAPIRecogCardRequest *recogCardReq = [[CCOpenAPIRecogCardRequest alloc] init];
     recogCardReq.appKey = AppKey;
     recogCardReq.userID = UserID;
-    [CCOpenAPI sendRequest:recogCardReq];
-    //    [recogCardReq release];
+    BOOL ret = [CCOpenAPI sendRequest:recogCardReq];
+    if (!ret)
+    {
+        CDVPluginResult* result = [CDVPluginResult
+                                   resultWithStatus:CDVCommandStatus_ERROR
+                                   messageAsString:@"Error invoking the camcard application"];
+        [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+    }
     
+}
+
+- (void)install:(CDVInvokedUrlCommand*)command
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[CCOpenAPI CCAppInstallUrl]]];
 }
 
 - (void)didReceiveResponseFromCamCardOpenAPI:(NSNotification *)notification {
     if ([notification.object isKindOfClass:[CCOpenAPIRecogCardResponse class]] == YES) {
         CCOpenAPIRecogCardResponse *response = (CCOpenAPIRecogCardResponse *)notification.object;
-        NSLog(@"[CC_OPEN_API] Status code from camcard open api:%d", response.responseCode);
+        NSLog(@"[CC_OPEN_API] Status code from camcard open api:%d", (long)response.responseCode);
         
         NSDictionary* ret = @{
                               @"vcf": response.vcfString,
