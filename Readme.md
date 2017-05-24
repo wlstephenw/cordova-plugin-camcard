@@ -1,7 +1,7 @@
 
 # Installation
 
-cordova plugin add https://github.com/wlstephenw/cordova-plugin-camcard.git --variable OPEN_ID=[your open id] --variable APP_ID=[your app id] --save
+cordova plugin add https://github.com/wlstephenw/cordova-plugin-camcard.git --variable OPEN_ID=[your open id] --save
 
 # Usage
 

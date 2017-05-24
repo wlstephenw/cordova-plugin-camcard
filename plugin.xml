@@ -28,7 +28,6 @@
 
   <platform name="ios">
     <preference name="OPEN_ID" />
-    <preference name="APP_ID" />
 
     <config-file target="config.xml" parent="/widget">
       <feature name="CamCard">
@@ -44,7 +43,7 @@
           <string>Editor</string>
           <key>CFBundleURLSchemes</key>
           <array>
-            <string>$APP_ID</string>
+            <string>$PACKAGE_NAME</string>
           </array>
         </dict>
       </array>
