@@ -81,15 +81,22 @@ public class CamCard extends CordovaPlugin {
             if ( openApi.isExistAppSupportOpenApi(activity) ){
                 openApi.recognizeCardByCapture(activity, REQUEST_CODE_RECOGNIZE, params);
             }else{
-                errorMsg = "No app support openapi";
-                Log.e(tag, "camcard download link:"+openApi.getDownloadLink());
+                errorMsg = "No app support openapi, " + "camcard download link:"+openApi.getDownloadLink();
+                Log.e(tag, errorMsg);
             }
         }else{
-            errorMsg = "No CamCard";
-            Log.e(tag, "camcard download link:"+openApi.getDownloadLink());
+            errorMsg = "No CamCard, " + "camcard download link:"+openApi.getDownloadLink();
+            Log.e(tag, errorMsg);
         }
         if (null != errorMsg){
-            this.callbackContext.error(errorMsg);
+            JSONObject obj = new JSONObject();
+            try {
+                obj.put("errorCode", "");
+                obj.put("errorMsg", errorMsg);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            this.callbackContext.error(obj);
         }
     }
 
@@ -112,9 +119,16 @@ public class CamCard extends CordovaPlugin {
         } else if (null != data){
             int errorCode=data.getIntExtra(openApi.ERROR_CODE, 200);
             String errorMessage=data.getStringExtra(openApi.ERROR_MESSAGE);
-            Log.e(tag, "ddebug error " + errorCode+","+errorMessage);
-            errorMessage = "Recognize canceled/failed. + ErrorCode " + errorCode + " ErrorMsg " + errorMessage;
-            this.callbackContext.error(errorMessage);
+            Log.e(tag, "debug error " + errorCode+","+errorMessage);
+
+            JSONObject obj = new JSONObject();
+            try {
+                obj.put("errorCode", errorCode);
+                obj.put("errorMsg", errorMessage);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            this.callbackContext.error(obj);
         }
     }
 
