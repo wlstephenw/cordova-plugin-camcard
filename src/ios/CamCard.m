@@ -1,13 +1,16 @@
 #import "CamCard.h"
 #import <CamCardOpenAPIFramework/OpenAPI.h>
 
-#define AppKey @"BVUX8H5BXy8SK0Xy0843CDA9"
-#define UserID @"YourUserID"
+NSString * AppKey = @"";
+NSString * UserID = @"YourUserID";
 
 @implementation CamCard
 
 - (void)pluginInitialize
 {
+    NSString* appKey = [[self.commandDelegate settings] objectForKey:@"openid"];
+    if (appKey)
+        AppKey = appKey;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveResponseFromCamCardOpenAPI:) name:CamCardOpenAPIDidReceiveResponseNotification object:nil];
 }
