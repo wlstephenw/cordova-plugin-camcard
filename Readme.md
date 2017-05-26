@@ -13,6 +13,9 @@ cordova plugin add https://github.com/wlstephenw/cordova-plugin-camcard.git --va
         }
         var failure = function(error) {
             alert(error.errorCode + ":" + error.errorMsg);
+            // empty error code means that camcard was not installed, if we are on iOS, then guid user to install from app store.
+            if (error.errorCode == "" && device.platform == "iOS")
+                CamCard.install();
         }
         CamCard.scan(success, failure);
 
