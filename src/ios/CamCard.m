@@ -26,6 +26,7 @@ NSString * UserID = @"YourUserID";
     CCOpenAPIRecogCardRequest *recogCardReq = [[CCOpenAPIRecogCardRequest alloc] init];
     recogCardReq.appKey = AppKey;
     recogCardReq.userID = UserID;
+    recogCardReq.needSaveInCardHolder = false;
     NSString *errMsg = nil;
     if([CCOpenAPI isCCAppInstalled])
     {
